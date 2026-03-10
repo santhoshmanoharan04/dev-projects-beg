@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('clone repo'){
             steps{
-                git'https://github.com/santhoshmanoharan04/dev-projects-beg.git'
+                git url:'https://github.com/santhoshmanoharan04/dev-projects-beg.git', branch: 'main'
             }
         }
         stage('build docker'){
@@ -13,13 +13,13 @@ pipeline{
         }
         stage('stop docker'){
             steps{
-                sh 'docker stop devops-container // true'
-                sh 'docker rm devops-container // true'
+                sh 'docker stop devops-container || true'
+                sh 'docker rm devops-container || true'
             }
         }
         stage('run docker'){
             steps{
-                sh 'docker run -d -p 5050:5050 --name devops-csi-container dev-proj-beg'
+                sh 'docker run -d -p 5050:5050 --name devops-container dev-proj-beg'
             }
         }
     }

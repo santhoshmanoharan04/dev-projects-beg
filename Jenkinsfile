@@ -19,7 +19,7 @@ pipeline{
         }
         stage('run docker'){
             steps{
-                sh 'docker run -d -p 5050:5050 --name devops-container dev-proj-beg'
+                sh 'docker run -d -p 5050:5000 --name devops-container dev-proj-beg'
             }
         }
     }
